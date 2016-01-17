@@ -22,47 +22,36 @@
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            {{ if .Site.Params.linkedinName }}
-                <a class="bloglogo" href="https://www.linkedin.com/in/{{ .Site.Params.linkedinName }}" target="_blank">
-                    <span class="icon-linkedin" style="color:white;font-size:2em"></span>
-                </a>
-            &nbsp;
-            {{end}}
             {{ if .Site.Params.githubName }}
-                <a  href="https://github.com/{{ .Site.Params.githubName }}" target="_blank">
+                <a  href="https://github.com/{{ .Site.Params.githubName }}">
                 <span class="icon-github" style="color:white;font-size:2em"></span>
                 </a>
-            &nbsp;
             {{end}}
+            &nbsp;
             {{ if .Site.Params.twitterName }}
-                <a class="bloglogo" href="https://twitter.com/{{ .Site.Params.twitterName }}" target="_blank">
+                <a class="bloglogo" href="https://twitter.com/{{ .Site.Params.twitterName }}">
                     <span class="icon-twitter" style="color:white;font-size:2em"></span>
                 </a>
-            &nbsp;
             {{end}}
             {{ if .Site.Params.facebookName }}
-                <a class="bloglogo" href="https://www.facebook.com/{{ .Site.Params.facebookName }}" target="_blank">
+                <a class="bloglogo" href="https://www.facebook.com/{{ .Site.Params.facebookName }}">
                     <span class="icon-facebook" style="color:white;font-size:2em"></span>
                 </a>
-            &nbsp;
             {{end}}
             {{ if .Site.Params.instagramName }}
-                <a class="bloglogo" href="https://instagram.com/{{ .Site.Params.instagramName }}" target="_blank">
+                <a class="bloglogo" href="https://instagram.com/{{ .Site.Params.instagramName }}">
                     <span class="icon-instagram" style="color:white;font-size:2em"></span>
                 </a>
-            &nbsp;
             {{end}}
             {{ if .Site.Params.pinterestName }}
-                <a class="bloglogo" href="https://www.pinterest.com/{{ .Site.Params.pinterestName }}" target="_blank">
+                <a class="bloglogo" href="https://www.pinterest.com/{{ .Site.Params.pinterestName }}">
                     <span class="icon-pinterest" style="color:white;font-size:2em"></span>
                 </a>
-            &nbsp;
             {{end}}
             {{ if .Site.Params.googlePlusName }}
-                <a class="bloglogo" href="https://google.com/+{{ .Site.Params.googlePlusName }}" target="_blank">
+                <a class="bloglogo" href="https://google.com/+{{ .Site.Params.googlePlusName }}">
                     <span class="icon-google-plus" style="color:white;font-size:2em"></span>
                 </a>
-            &nbsp;
             {{end}}
 
             <h1 class="page-title">{{ .Site.Title }}</h1>
@@ -90,10 +79,7 @@
             {{ $.Scratch.Set "paginatedSections" "post" }}
         {{ end }}
     {{ end }}
-    
-    {{ $list := where .Data.Pages "Section" "in" ($.Scratch.Get "paginatedSections") }}
-    {{ $list := where $list "Section" "!=" "" }}
-    {{ $paginator := .Paginate ( $list ) }}
+    {{ $paginator := .Paginate ( where .Data.Pages "Section" "in" ($.Scratch.Get "paginatedSections") ) }}
 
     <div class="extra-pagination inner">
         {{ partial "pagination.html" $paginator }}
